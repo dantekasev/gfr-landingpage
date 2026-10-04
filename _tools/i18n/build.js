@@ -83,7 +83,8 @@ function waText(href) {
   return m[1] + encodeURIComponent(a);
 }
 
-const pageUrl = (f, lang) => DOMAIN + '/' + (lang === 'en' ? 'en/' : '') + (f === 'index.html' ? '' : f);
+/* hosting (Cloudflare Pages) menyajikan URL tanpa .html; /camping.html dialihkan ke /camping */
+const pageUrl = (f, lang) => DOMAIN + '/' + (lang === 'en' ? 'en/' : '') + (f === 'index.html' ? '' : f.replace(/\.html$/, ''));
 
 function build(file) {
   curPage = file;
